@@ -1,19 +1,18 @@
 import React,{useEffect,useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import EmpInput from '../../Form/FormInput'
-import { doGetEmp,doAddEmp } from '../Action/emp_action'
+import { doGetEmps,doAddEmps } from '../../ReduxToolkit/EmpSlice'
 
-export default function EmployeeRedux() {
+export default function EmployeeReduxToolkit() {
     const dispatch = useDispatch()
-    const emp = useSelector(state=> state.employee)
-    const total = useSelector(state=> state.totalSalary)
+    const emp = useSelector(state=> state.empStore.employee)
+    const total = useSelector(state=> state.empStore.totalSalary)
 
     const [display, setDisplay] = useState(false)
     const [values,setValues] = useState({
         fullname: undefined,
         salary: 0
     })
-
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value })
     }
@@ -24,10 +23,9 @@ export default function EmployeeRedux() {
             fullname: values.fullname,
             salary: values.salary
         }
-        dispatch(doAddEmp(payload))
+        dispatch(doAddEmps(payload))
         setDisplay(false)
     }
-
   return (
     <div>
         <h2>List Employee</h2>

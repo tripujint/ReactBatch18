@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import storeRedux from './Redux/Store';
 import { Provider } from 'react-redux';
+import storeRedux from './Redux/Store';
+import storeToolkit from './ReduxToolkit/storeToolkit';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={storeRedux}>
+  <Provider store={storeToolkit}>
     <React.StrictMode>
       <App />
     </React.StrictMode>

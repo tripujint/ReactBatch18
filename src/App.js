@@ -7,11 +7,12 @@ import ParentEmployee from './Form/ParentEmployee';
 import EmployeeList from './List/EmployeeList';
 import Parent from './ParentChild/Parent';
 import EmployeeRedux from './Redux/ReduxList/EmployeeRedux';
+import EmployeeReduxToolkit from './Redux/ReduxList/EmployeeReduxToolkit';
 
 function App() {
   return (
     <div className="App">
-      <EmployeeRedux />
+      <EmployeeReduxToolkit/>
     </div>
   );
 }
