@@ -9,11 +9,11 @@ import storeToolkit from './ReduxToolkit/storeToolkit';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={storeToolkit}>
+  // <Provider store={storeToolkit}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </Provider>
+  // </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
