@@ -3,7 +3,7 @@ import config from "../Config/config"
 
 const list = async()=>{
     try {
-        const result = await axios.get(`${config.domain}/api/region`)
+        const result = await axios.get(`${config.domain}/api/location`)
         return result.data
     } catch (error) {
         return await error.message
@@ -11,7 +11,7 @@ const list = async()=>{
 }
 const Delete = async(id)=>{
     try {
-        const result = await axios.delete(`${config.domain}/api/region/${id}`)
+        const result = await axios.delete(`${config.domain}/api/location/${id}`)
         return result
     } catch (error) {
         return await error.message
@@ -19,8 +19,7 @@ const Delete = async(id)=>{
 }
 const Create = async(payload)=>{
     try {
-        const result = await axios.post(`${config.domain}/api/region/`,payload)
-        console.log(payload);
+        const result = await axios.post(`${config.domain}/api/location`,payload)
         return result
     } catch (error) {
         return await error.message
@@ -28,7 +27,7 @@ const Create = async(payload)=>{
 }
 const Update = async(payload)=>{
     try {
-        const result = await axios.put(`${config.domain}/api/region/${payload.regionId}`,payload)
+        const result = await axios.put(`${config.domain}/api/location/${payload.locationId}`,payload)
         return result
     } catch (error) {
         return await error.message
@@ -36,11 +35,10 @@ const Update = async(payload)=>{
 }
 const FindOne = async(id)=>{
     try {
-        const result = await axios.get(`${config.domain}/api/region/${id}`)
-        return result.data 
+        const result = await axios.get(`${config.domain}/api/location/${id}`)
+        return result.data
     } catch (error) {
         return await error.message
     }
 }
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {list,Delete,Create,Update,FindOne}

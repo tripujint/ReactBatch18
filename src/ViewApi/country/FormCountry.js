@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import RegionApi from '../api/RegionApi'
+import CountryApi from '../../api/CountryApi'
 
-export default function FormRegionApi(props) {
+export default function FormCountry(props) {
     const [values, setValues] = useState({
-        regionName: undefined
-
+        countryId: undefined,
+        countryName: undefined
     })
 
     const HandleChange = name => event => {
@@ -13,9 +13,10 @@ export default function FormRegionApi(props) {
 
     const onSubmit = async () => {
         const payload = {
-            regionName: (values.regionName)
+            countryId: (values.countryId),
+            countryName: (values.countryName)
         }
-        await RegionApi.Create(payload)
+        await CountryApi.Create(payload)
             .then(() => {
                 props.setRefresh(true)
                 window.alert('Data Successfully Insert')
@@ -24,11 +25,15 @@ export default function FormRegionApi(props) {
 
     return (
         <div>
-            <h2>Add Region</h2>
+            <h2>Add Country</h2>
             <form onSubmit={onSubmit}>
                 <div>
-                    <label>Region Name : </label>
-                    <input type="text" onChange={HandleChange('regionName')}></input>
+                    <label>Country ID : </label>
+                    <input type="text" onChange={HandleChange('countryId')}></input>
+                </div>
+                <div>
+                    <label>Country Name : </label>
+                    <input type="text" onChange={HandleChange('countryName')}></input>
                 </div>
                 <div>
                     <button type='submit'>Simpan</button>

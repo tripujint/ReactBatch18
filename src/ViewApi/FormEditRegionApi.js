@@ -4,7 +4,7 @@ import RegionApi from '../api/RegionApi'
 export default function FormEditRegionApi(props) {
     const [region, setRegion] = useState([])
     const [values, setValues] = useState({
-        regionId: undefined,
+        // regionId: undefined,
         regionName: undefined
     })
     useEffect(() => {
@@ -24,6 +24,7 @@ export default function FormEditRegionApi(props) {
         }
         await RegionApi.Update(payload)
             .then(() => {
+                console.log(payload);
                 props.setRefresh(true)
                 window.alert('Data Successfully Updated')
             })
@@ -35,7 +36,7 @@ export default function FormEditRegionApi(props) {
             <form onSubmit={onEdit}>
                 <div>
                     <label>Region ID : </label>
-                    <input type="text" defaultValue={region.regionId} onChange={HandleChange('regionId')} disabled></input>
+                    <input type="text" defaultValue={region.regionId} disabled></input>
                 </div>
                 <div>
                     <label>Region Name : </label>
