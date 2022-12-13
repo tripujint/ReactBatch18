@@ -1,0 +1,41 @@
+import React, { useState } from 'react'
+import DepartmentApi from '../../api/DepartmentApi'
+
+export default function FormDepartment(props) {
+    const [values, setValues] = useState({
+        departmentId: undefined,
+        departmentName: undefined
+    })
+
+    const HandleChange = name => event => {
+        setValues({...values, [name]: event.target.value})
+    }
+
+    const onSubmit = async () => {
+        const payload = {
+            departmentId: (values.departmentId),
+            departmentName: (values.departmentName)
+        }
+        await DepartmentApi.Create(payload)
+            .then(() => {
+                props.setRefresh(true)
+                window.alert('Data Successfully Insert')
+            })
+    }
+
+    return (
+        <div>
+            <h2>Add Department</h2>
+            <form onSubmit={onSubmit}>
+                <div>
+                    <label>Department Name : </label>
+                    <input type="text" onChange={HandleChange('departmentName')}></input>
+                </div>
+                <div>
+                    <button type='submit'>Simpan</button>
+                    <button onClick={() => props.setDisplay(false)}>Cancel</button>
+                </div>
+            </form>        
+        </div>
+    )
+}
