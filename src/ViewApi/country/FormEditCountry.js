@@ -12,6 +12,7 @@ export default function FormEditCountry(props) {
     useEffect(() => {
         CountryApi.FindOne(props.id).then(data => {
             setCountry(data)
+            console.log(data);
         })
     }, [])
 
@@ -23,7 +24,7 @@ export default function FormEditCountry(props) {
         const payload = {
             countryId: (props.id),
             countryName: (values.countryName),
-            regionId: (values.regionName)
+            regionId: (values.regionId)
         }
         await CountryApi.Update(payload)
             .then(() => {
@@ -43,6 +44,10 @@ export default function FormEditCountry(props) {
                 <div>
                     <label>Country Name : </label>
                     <input type="text" defaultValue={country.countryName} onChange={HandleChange('countryName')}></input>
+                </div>
+                <div>
+                    <label>Region ID : </label>
+                    <input type="number" defaultValue={country.regionId} onChange={HandleChange('regionId')}></input>
                 </div>
                 <div>
                     <button type='submit'>Simpan</button>

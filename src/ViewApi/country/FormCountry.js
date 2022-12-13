@@ -38,6 +38,10 @@ export default function FormCountry(props) {
                     <input type="text" onChange={HandleChange('countryName')}></input>
                 </div>
                 <div>
+                    <label>Region ID : </label>
+                    <input type="number" onChange={HandleChange('regionId')}></input>
+                </div>
+                <div>
                     <button type='submit'>Simpan</button>
                     <button onClick={() => props.setDisplay(false)}>Cancel</button>
                 </div>
